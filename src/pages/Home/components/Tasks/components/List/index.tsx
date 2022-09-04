@@ -1,4 +1,4 @@
-import { Task } from '../Task'
+import { Task } from './components/Task'
 import styles from './List.module.css'
 
 interface ITask {

@@ -1,4 +1,4 @@
-import clipboardLogo from '../../assets/clipboard.svg'
+import clipboardLogo from '../../../../../../assets/clipboard.svg'
 import styles from './Empty.module.css'
 
 function Empty() {

@@ -1,6 +1,6 @@
-import { Empty } from '../Empty'
-import { Info } from '../Info'
-import { List } from '../List'
+import { Empty } from './components/Empty'
+import { Info } from './components/Info'
+import { List } from './components/List'
 import styles from './Tasks.module.css'
 
 interface ITask {

@@ -1,30 +1,30 @@
-import { Empty } from '../Empty';
-import { Info } from '../Info';
-import { List } from '../List';
-import styles from './Tasks.module.css';
+import { Empty } from '../Empty'
+import { Info } from '../Info'
+import { List } from '../List'
+import styles from './Tasks.module.css'
 
 interface ITask {
-  id: string;
-  title: string;
-  done: boolean;
-  deadline: Date;
-  createdAt: Date;
-  userId: string;
+  id: string
+  title: string
+  done: boolean
+  deadline: Date
+  createdAt: Date
+  userId: string
 }
 
 interface IProps {
-  tasks: ITask[];
-  onCheckTask: (id: String) => void;
-  onUncheckTask: (id: String) => void;
-  onDeleteTask: (id: String) => void;
+  tasks: ITask[]
+  onCheckTask: (id: String) => void
+  onUncheckTask: (id: String) => void
+  onDeleteTask: (id: String) => void
 }
 
 function Tasks({ tasks, onCheckTask, onUncheckTask, onDeleteTask }: IProps) {
   function findNumberOfCompletedTasks(): number {
-    return tasks.filter((task) => task.done === true).length;
+    return tasks.filter((task) => task.done === true).length
   }
 
-  const areThereTasks = tasks.length > 0;
+  const areThereTasks = tasks.length > 0
 
   return (
     <div className={styles.tasks}>
@@ -43,7 +43,7 @@ function Tasks({ tasks, onCheckTask, onUncheckTask, onDeleteTask }: IProps) {
         <Empty />
       )}
     </div>
-  );
+  )
 }
 
-export { Tasks };
+export { Tasks }

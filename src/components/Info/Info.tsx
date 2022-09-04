@@ -1,8 +1,8 @@
-import styles from './Info.module.css';
+import styles from './Info.module.css'
 
 interface IProps {
-  numberOfTasks: number;
-  numberOfCompletedTasks: number;
+  numberOfTasks: number
+  numberOfCompletedTasks: number
 }
 
 function Info({ numberOfTasks, numberOfCompletedTasks }: IProps) {
@@ -19,7 +19,7 @@ function Info({ numberOfTasks, numberOfCompletedTasks }: IProps) {
         </span>
       </div>
     </div>
-  );
+  )
 }
 
-export { Info };
+export { Info }

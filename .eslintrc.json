@@ -1,0 +1,30 @@
+{
+  "extends": "@rocketseat/eslint-config/react",
+  "plugins": [
+    "eslint-plugin-import-helpers",
+    "unused-imports"
+  ],
+  "rules": {
+		"unused-imports/no-unused-imports": "error",
+		"unused-imports/no-unused-vars": [
+			"warn",
+			{ "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+		],
+		"import-helpers/order-imports": [
+			"warn",
+			{
+				"newlinesBetween": "always",
+				"groups": [
+					"module",
+					"/^@server/shared/",
+					"/^@/",
+					["parent", "sibling", "index"]
+				],
+				"alphabetize": {
+					"order": "asc",
+					"ignoreCase": true
+				}
+			}
+		]
+  }
+}

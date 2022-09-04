@@ -1,1 +1,1 @@
-export * from './NewTask';
+export * from './NewTask'

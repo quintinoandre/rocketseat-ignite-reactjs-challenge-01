@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { Header } from './components/Header';
-import { NewTask } from './components/NewTask';
-import { Tasks } from './components/Tasks';
-import './global.css';
+import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+
+import { Header } from './components/Header'
+import { NewTask } from './components/NewTask'
+import { Tasks } from './components/Tasks'
+import './global.css'
 
 const mockTasks = [
   {
@@ -51,52 +52,52 @@ const mockTasks = [
     createdAt: new Date(),
     userId: uuidv4(),
   },
-];
+]
 
 interface ITask {
-  id: string;
-  title: string;
-  done: boolean;
-  deadline: Date;
-  createdAt: Date;
-  userId: string;
+  id: string
+  title: string
+  done: boolean
+  deadline: Date
+  createdAt: Date
+  userId: string
 }
 
 function App() {
-  const [tasks, setTasks] = useState([...mockTasks]);
+  const [tasks, setTasks] = useState([...mockTasks])
 
   function createNewTask(newTask: ITask) {
-    setTasks([...tasks, newTask]);
+    setTasks([...tasks, newTask])
   }
 
   function checkTask(id: String) {
     const updatedTasks = tasks.map((task) => {
       if (task.id === id) {
-        task.done = true;
+        task.done = true
       }
 
-      return task;
-    });
+      return task
+    })
 
-    setTasks(updatedTasks);
+    setTasks(updatedTasks)
   }
 
   function uncheckTask(id: String) {
     const updatedTasks = tasks.map((task) => {
       if (task.id === id) {
-        task.done = false;
+        task.done = false
       }
 
-      return task;
-    });
+      return task
+    })
 
-    setTasks(updatedTasks);
+    setTasks(updatedTasks)
   }
 
   function deleteTask(id: String) {
-    const tasksWithoutDeletedOne = tasks.filter((task) => task.id !== id);
+    const tasksWithoutDeletedOne = tasks.filter((task) => task.id !== id)
 
-    setTasks(tasksWithoutDeletedOne);
+    setTasks(tasksWithoutDeletedOne)
   }
 
   return (
@@ -110,7 +111,7 @@ function App() {
         onDeleteTask={(id) => deleteTask(id)}
       />
     </>
-  );
+  )
 }
 
-export { App };
+export { App }

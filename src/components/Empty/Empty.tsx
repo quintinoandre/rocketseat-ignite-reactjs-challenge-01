@@ -1,5 +1,5 @@
-import clipboardLogo from '../../assets/clipboard.svg';
-import styles from './Empty.module.css';
+import clipboardLogo from '../../assets/clipboard.svg'
+import styles from './Empty.module.css'
 
 function Empty() {
   return (
@@ -10,7 +10,7 @@ function Empty() {
         <p>Create tasks and organize your items to do</p>
       </div>
     </div>
-  );
+  )
 }
 
-export { Empty };
+export { Empty }

@@ -1,20 +1,20 @@
-import { Task } from '../Task';
-import styles from './List.module.css';
+import { Task } from '../Task'
+import styles from './List.module.css'
 
 interface ITask {
-  id: string;
-  title: string;
-  done: boolean;
-  deadline: Date;
-  createdAt: Date;
-  userId: string;
+  id: string
+  title: string
+  done: boolean
+  deadline: Date
+  createdAt: Date
+  userId: string
 }
 
 interface IProps {
-  tasks: ITask[];
-  onCheckTask: (id: String) => void;
-  onUncheckTask: (id: String) => void;
-  onDeleteTask: (id: String) => void;
+  tasks: ITask[]
+  onCheckTask: (id: String) => void
+  onUncheckTask: (id: String) => void
+  onDeleteTask: (id: String) => void
 }
 
 function List({ tasks, onCheckTask, onUncheckTask, onDeleteTask }: IProps) {
@@ -30,7 +30,7 @@ function List({ tasks, onCheckTask, onUncheckTask, onDeleteTask }: IProps) {
         />
       ))}
     </div>
-  );
+  )
 }
 
-export { List };
+export { List }

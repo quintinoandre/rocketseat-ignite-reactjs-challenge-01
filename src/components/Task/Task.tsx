@@ -1,16 +1,17 @@
-import { Check, Circle, Trash } from 'phosphor-react';
-import styles from './Task.module.css';
+import { Check, Circle, Trash } from 'phosphor-react'
+
+import styles from './Task.module.css'
 
 interface IProps {
-  id: string;
-  title: string;
-  done: boolean;
-  deadline: Date;
-  createdAt: Date;
-  userId: string;
-  onCheckTask: (id: String) => void;
-  onUncheckTask: (id: String) => void;
-  onDeleteTask: (id: String) => void;
+  id: string
+  title: string
+  done: boolean
+  deadline: Date
+  createdAt: Date
+  userId: string
+  onCheckTask: (id: String) => void
+  onUncheckTask: (id: String) => void
+  onDeleteTask: (id: String) => void
 }
 
 function Task({
@@ -22,15 +23,15 @@ function Task({
   onDeleteTask,
 }: IProps) {
   function handleDeleteTask() {
-    onDeleteTask(id);
+    onDeleteTask(id)
   }
 
   function handleCheckTask() {
-    onCheckTask(id);
+    onCheckTask(id)
   }
 
   function handleUncheckTask() {
-    onUncheckTask(id);
+    onUncheckTask(id)
   }
 
   return (
@@ -61,7 +62,7 @@ function Task({
         <Trash size={24} />
       </button>
     </div>
-  );
+  )
 }
 
-export { Task };
+export { Task }

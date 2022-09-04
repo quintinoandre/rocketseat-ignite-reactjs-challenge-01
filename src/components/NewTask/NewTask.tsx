@@ -1,30 +1,31 @@
-import { PlusCircle } from 'phosphor-react';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import styles from './NewTask.module.css';
+import { PlusCircle } from 'phosphor-react'
+import { ChangeEvent, FormEvent, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
+
+import styles from './NewTask.module.css'
 
 interface ITask {
-  id: string;
-  title: string;
-  done: boolean;
-  deadline: Date;
-  createdAt: Date;
-  userId: string;
+  id: string
+  title: string
+  done: boolean
+  deadline: Date
+  createdAt: Date
+  userId: string
 }
 
 interface IProps {
-  onCreateNewTask: (newTask: ITask) => void;
+  onCreateNewTask: (newTask: ITask) => void
 }
 
 function NewTask({ onCreateNewTask }: IProps) {
-  const [newTaskText, setNewTaskText] = useState('');
+  const [newTaskText, setNewTaskText] = useState('')
 
   function handleNewTaskTextChange(event: ChangeEvent<HTMLInputElement>) {
-    setNewTaskText(event.target.value);
+    setNewTaskText(event.target.value)
   }
 
   function handleCreateNewTask(event: FormEvent) {
-    event.preventDefault();
+    event.preventDefault()
 
     onCreateNewTask({
       id: uuidv4(),
@@ -33,12 +34,12 @@ function NewTask({ onCreateNewTask }: IProps) {
       deadline: new Date(),
       createdAt: new Date(),
       userId: uuidv4(),
-    });
+    })
 
-    setNewTaskText('');
+    setNewTaskText('')
   }
 
-  const isNewTaskTextEmpty = newTaskText.length === 0;
+  const isNewTaskTextEmpty = newTaskText.length === 0
 
   return (
     <form
@@ -56,7 +57,7 @@ function NewTask({ onCreateNewTask }: IProps) {
         <PlusCircle size={16} />
       </button>
     </form>
-  );
+  )
 }
 
-export { NewTask };
+export { NewTask }

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { Header } from '../../components/Header'
 import { NewTask } from '../../components/NewTask'
 import { Tasks } from '../../components/Tasks'
 
@@ -103,7 +102,6 @@ function Home() {
 
   return (
     <>
-      <Header />
       <NewTask onCreateNewTask={(newTask) => createNewTask(newTask)} />
       <Tasks
         tasks={tasks}

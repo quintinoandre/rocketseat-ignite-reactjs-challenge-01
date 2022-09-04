@@ -1,7 +1,7 @@
 import { Empty } from './components/Empty'
 import { Info } from './components/Info'
 import { List } from './components/List'
-import styles from './Tasks.module.css'
+import { TasksContainer } from './styles'
 
 interface ITask {
   id: string
@@ -27,7 +27,7 @@ function Tasks({ tasks, onCheckTask, onUncheckTask, onDeleteTask }: IProps) {
   const areThereTasks = tasks.length > 0
 
   return (
-    <div className={styles.tasks}>
+    <TasksContainer>
       <Info
         numberOfTasks={tasks.length}
         numberOfCompletedTasks={findNumberOfCompletedTasks()}
@@ -42,7 +42,7 @@ function Tasks({ tasks, onCheckTask, onUncheckTask, onDeleteTask }: IProps) {
       ) : (
         <Empty />
       )}
-    </div>
+    </TasksContainer>
   )
 }
 

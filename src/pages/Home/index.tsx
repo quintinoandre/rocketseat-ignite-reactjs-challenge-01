@@ -4,8 +4,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { NewTask } from './components/NewTask'
 import { Tasks } from './components/Tasks'
 
-import '../../global.css'
-
 const mockTasks = [
   {
     id: uuidv4(),

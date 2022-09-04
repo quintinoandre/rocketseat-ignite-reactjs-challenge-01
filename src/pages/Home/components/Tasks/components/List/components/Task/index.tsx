@@ -1,6 +1,13 @@
 import { Check, Circle, Trash } from 'phosphor-react'
 
-import styles from './Task.module.css'
+import {
+  CheckCircleButton,
+  CircleButton,
+  TaskContainer,
+  TaskDone,
+  TaskNotDone,
+  TrashButton,
+} from './styles'
 
 interface IProps {
   id: string
@@ -35,33 +42,24 @@ function Task({
   }
 
   return (
-    <div className={styles.task}>
+    <TaskContainer>
       {done ? (
-        <button
-          className={styles.checkCircle}
+        <CheckCircleButton
           onClick={handleUncheckTask}
           title="Mark the task as not done"
         >
           <Check size={24} />
-        </button>
+        </CheckCircleButton>
       ) : (
-        <button
-          className={styles.circle}
-          onClick={handleCheckTask}
-          title="Mark the task as done"
-        >
+        <CircleButton onClick={handleCheckTask} title="Mark the task as done">
           <Circle size={24} />
-        </button>
+        </CircleButton>
       )}
-      <p className={done ? styles.done : styles.notDone}>{title}</p>
-      <button
-        className={styles.trash}
-        onClick={handleDeleteTask}
-        title="Delete task"
-      >
+      {done ? <TaskDone>{title}</TaskDone> : <TaskNotDone>{title}</TaskNotDone>}
+      <TrashButton onClick={handleDeleteTask} title="Delete task">
         <Trash size={24} />
-      </button>
-    </div>
+      </TrashButton>
+    </TaskContainer>
   )
 }
 

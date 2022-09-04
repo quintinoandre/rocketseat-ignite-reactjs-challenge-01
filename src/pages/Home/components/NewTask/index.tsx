@@ -2,7 +2,7 @@ import { PlusCircle } from 'phosphor-react'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import styles from './NewTask.module.css'
+import { CreateNewTaskButton, FormContainer, TaskInput } from './styles'
 
 interface ITask {
   id: string
@@ -42,21 +42,18 @@ function NewTask({ onCreateNewTask }: IProps) {
   const isNewTaskTextEmpty = newTaskText.length === 0
 
   return (
-    <form
-      className={styles.newTask}
-      onSubmit={(event) => handleCreateNewTask(event)}
-    >
-      <input
+    <FormContainer onSubmit={(event) => handleCreateNewTask(event)}>
+      <TaskInput
         type="text"
         placeholder="Add a new task"
         value={newTaskText}
         onChange={(event) => handleNewTaskTextChange(event)}
       />
-      <button type="submit" disabled={isNewTaskTextEmpty}>
+      <CreateNewTaskButton type="submit" disabled={isNewTaskTextEmpty}>
         Create
         <PlusCircle size={16} />
-      </button>
-    </form>
+      </CreateNewTaskButton>
+    </FormContainer>
   )
 }
 

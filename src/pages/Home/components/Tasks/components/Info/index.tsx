@@ -1,4 +1,9 @@
-import styles from './Info.module.css'
+import {
+  CompletedTasksContainer,
+  CreatedTasksContainer,
+  InfoContainer,
+  Span,
+} from './styles'
 
 interface IProps {
   numberOfTasks: number
@@ -7,18 +12,18 @@ interface IProps {
 
 function Info({ numberOfTasks, numberOfCompletedTasks }: IProps) {
   return (
-    <div className={styles.info}>
-      <div className={styles.created}>
+    <InfoContainer>
+      <CreatedTasksContainer>
         Tasks created
-        <span>{numberOfTasks}</span>
-      </div>
-      <div className={styles.done}>
+        <Span>{numberOfTasks}</Span>
+      </CreatedTasksContainer>
+      <CompletedTasksContainer>
         Completed
-        <span>
+        <Span>
           {numberOfCompletedTasks} de {numberOfTasks}
-        </span>
-      </div>
-    </div>
+        </Span>
+      </CompletedTasksContainer>
+    </InfoContainer>
   )
 }
 

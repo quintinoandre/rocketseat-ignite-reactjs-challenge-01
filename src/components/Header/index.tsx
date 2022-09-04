@@ -1,11 +1,11 @@
 import todoLogo from '../../assets/todo-logo.svg'
-import styles from './Header.module.css'
+import { HeaderContainer } from './styles'
 
 function Header() {
   return (
-    <header className={styles.header}>
+    <HeaderContainer>
       <img src={todoLogo} alt="todo logo" />
-    </header>
+    </HeaderContainer>
   )
 }
 

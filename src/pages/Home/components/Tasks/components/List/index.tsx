@@ -1,5 +1,5 @@
 import { Task } from './components/Task'
-import styles from './List.module.css'
+import { ListContainer } from './styles'
 
 interface ITask {
   id: string
@@ -19,7 +19,7 @@ interface IProps {
 
 function List({ tasks, onCheckTask, onUncheckTask, onDeleteTask }: IProps) {
   return (
-    <div className={styles.list}>
+    <ListContainer>
       {tasks.map((task) => (
         <Task
           key={task.id}
@@ -29,7 +29,7 @@ function List({ tasks, onCheckTask, onUncheckTask, onDeleteTask }: IProps) {
           onDeleteTask={onDeleteTask}
         />
       ))}
-    </div>
+    </ListContainer>
   )
 }
 

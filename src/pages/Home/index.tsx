@@ -65,7 +65,7 @@ interface ITask {
 }
 
 function Home() {
-  const [tasks, setTasks] = useState([...mockTasks])
+  const [tasks, setTasks] = useState<ITask[]>([...mockTasks])
 
   function createNewTask(newTask: ITask) {
     setTasks([...tasks, newTask])

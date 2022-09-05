@@ -1,8 +1,17 @@
 import { PlusCircle } from 'phosphor-react'
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
+import * as zod from 'zod'
+
+import { zodResolver } from '@hookform/resolvers/zod'
 
 import { CreateNewTaskButton, FormContainer, TaskInput } from './styles'
+
+const newTaskFormValidationSchema = zod.object({
+  title: zod.string().min(1, 'Inform the task'),
+})
+
+type NewTaskFormData = zod.infer<typeof newTaskFormValidationSchema>
 
 interface ITask {
   id: string
@@ -18,38 +27,37 @@ interface IProps {
 }
 
 function NewTask({ onCreateNewTask }: IProps) {
-  const [newTaskText, setNewTaskText] = useState('')
+  const { register, handleSubmit, watch, reset } = useForm<NewTaskFormData>({
+    resolver: zodResolver(newTaskFormValidationSchema),
+    defaultValues: { title: '' },
+  })
 
-  function handleNewTaskTextChange(event: ChangeEvent<HTMLInputElement>) {
-    setNewTaskText(event.target.value)
-  }
-
-  function handleCreateNewTask(event: FormEvent) {
-    event.preventDefault()
-
+  function handleCreateNewTask({ title }: NewTaskFormData) {
     onCreateNewTask({
       id: uuidv4(),
-      title: newTaskText,
+      title,
       done: false,
       deadline: new Date(),
       createdAt: new Date(),
       userId: uuidv4(),
     })
 
-    setNewTaskText('')
+    reset()
   }
 
-  const isNewTaskTextEmpty = newTaskText.length === 0
+  const title = watch('title')
+
+  const isSubmitDisable = !title
 
   return (
-    <FormContainer onSubmit={(event) => handleCreateNewTask(event)}>
+    <FormContainer onSubmit={handleSubmit(handleCreateNewTask)}>
       <TaskInput
+        id="title"
         type="text"
         placeholder="Add a new task"
-        value={newTaskText}
-        onChange={(event) => handleNewTaskTextChange(event)}
+        {...register('title')}
       />
-      <CreateNewTaskButton type="submit" disabled={isNewTaskTextEmpty}>
+      <CreateNewTaskButton type="submit" disabled={isSubmitDisable}>
         Create
         <PlusCircle size={16} />
       </CreateNewTaskButton>

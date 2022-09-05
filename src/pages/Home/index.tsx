@@ -1,8 +1,11 @@
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { Empty } from './components/Empty'
+import { Info } from './components/Info'
 import { NewTask } from './components/NewTask'
-import { Tasks } from './components/Tasks'
+import { Task } from './components/Task'
+import { ListContainer, TasksContainer } from './styles'
 
 const mockTasks = [
   {
@@ -98,15 +101,36 @@ function Home() {
     setTasks(tasksWithoutDeletedOne)
   }
 
+  function findNumberOfCompletedTasks(): number {
+    return tasks.filter((task) => task.done === true).length
+  }
+
+  const areThereTasks = tasks.length > 0
+
   return (
     <>
       <NewTask onCreateNewTask={(newTask) => createNewTask(newTask)} />
-      <Tasks
-        tasks={tasks}
-        onCheckTask={(id) => checkTask(id)}
-        onUncheckTask={(id) => uncheckTask(id)}
-        onDeleteTask={(id) => deleteTask(id)}
-      />
+      <TasksContainer>
+        <Info
+          numberOfTasks={tasks.length}
+          numberOfCompletedTasks={findNumberOfCompletedTasks()}
+        />
+        {areThereTasks ? (
+          <ListContainer>
+            {tasks.map((task) => (
+              <Task
+                key={task.id}
+                {...task}
+                onCheckTask={(id) => checkTask(id)}
+                onUncheckTask={(id) => uncheckTask(id)}
+                onDeleteTask={(id) => deleteTask(id)}
+              />
+            ))}
+          </ListContainer>
+        ) : (
+          <Empty />
+        )}
+      </TasksContainer>
     </>
   )
 }

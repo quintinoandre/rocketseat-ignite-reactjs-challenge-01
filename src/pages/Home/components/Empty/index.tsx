@@ -1,4 +1,4 @@
-import clipboardLogo from '../../../../../../assets/clipboard.svg'
+import clipboardLogo from '../../../../assets/clipboard.svg'
 import { EmptyContainer } from './styles'
 
 function Empty() {

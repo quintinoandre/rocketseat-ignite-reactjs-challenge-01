@@ -1,3 +1,6 @@
+import { useContext } from 'react'
+
+import { TasksContext } from '../../../../contexts/tasksContext'
 import {
   CompletedTasksContainer,
   CreatedTasksContainer,
@@ -5,22 +8,20 @@ import {
   Span,
 } from './styles'
 
-interface IProps {
-  numberOfTasks: number
-  numberOfCompletedTasks: number
-}
+function Info() {
+  const { findNumberOfTasks, findNumberOfCompletedTasks } =
+    useContext(TasksContext)
 
-function Info({ numberOfTasks, numberOfCompletedTasks }: IProps) {
   return (
     <InfoContainer>
       <CreatedTasksContainer>
         Tasks created
-        <Span>{numberOfTasks}</Span>
+        <Span>{findNumberOfTasks()}</Span>
       </CreatedTasksContainer>
       <CompletedTasksContainer>
         Completed
         <Span>
-          {numberOfCompletedTasks} de {numberOfTasks}
+          {findNumberOfCompletedTasks()} de {findNumberOfTasks()}
         </Span>
       </CompletedTasksContainer>
     </InfoContainer>

@@ -1,5 +1,7 @@
 import { Check, Circle, Trash } from 'phosphor-react'
+import { useContext } from 'react'
 
+import { TasksContext } from '../../../../contexts/tasksContext'
 import {
   CheckCircleButton,
   CircleButton,
@@ -16,29 +18,21 @@ interface IProps {
   deadline: Date
   createdAt: Date
   userId: string
-  onCheckTask: (id: String) => void
-  onUncheckTask: (id: String) => void
-  onDeleteTask: (id: String) => void
 }
 
-function Task({
-  id,
-  title,
-  done,
-  onCheckTask,
-  onUncheckTask,
-  onDeleteTask,
-}: IProps) {
-  function handleDeleteTask() {
-    onDeleteTask(id)
-  }
+function Task({ id, title, done }: IProps) {
+  const { checkTask, uncheckTask, deleteTask } = useContext(TasksContext)
 
   function handleCheckTask() {
-    onCheckTask(id)
+    checkTask(id)
   }
 
   function handleUncheckTask() {
-    onUncheckTask(id)
+    uncheckTask(id)
+  }
+
+  function handleDeleteTask() {
+    deleteTask(id)
   }
 
   return (

@@ -1,10 +1,11 @@
 import { PlusCircle } from 'phosphor-react'
+import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { v4 as uuidv4 } from 'uuid'
 import * as zod from 'zod'
 
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { TasksContext } from '../../../../contexts/tasksContext'
 import { CreateNewTaskButton, FormContainer, TaskInput } from './styles'
 
 const newTaskFormValidationSchema = zod.object({
@@ -13,34 +14,16 @@ const newTaskFormValidationSchema = zod.object({
 
 type NewTaskFormData = zod.infer<typeof newTaskFormValidationSchema>
 
-interface ITask {
-  id: string
-  title: string
-  done: boolean
-  deadline: Date
-  createdAt: Date
-  userId: string
-}
-
-interface IProps {
-  onCreateNewTask: (newTask: ITask) => void
-}
-
-function NewTask({ onCreateNewTask }: IProps) {
+function NewTask() {
   const { register, handleSubmit, watch, reset } = useForm<NewTaskFormData>({
     resolver: zodResolver(newTaskFormValidationSchema),
     defaultValues: { title: '' },
   })
 
+  const { createNewTask } = useContext(TasksContext)
+
   function handleCreateNewTask({ title }: NewTaskFormData) {
-    onCreateNewTask({
-      id: uuidv4(),
-      title,
-      done: false,
-      deadline: new Date(),
-      createdAt: new Date(),
-      userId: uuidv4(),
-    })
+    createNewTask({ title })
 
     reset()
   }

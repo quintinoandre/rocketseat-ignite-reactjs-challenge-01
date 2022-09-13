@@ -4,7 +4,7 @@ import { TasksContext } from '../../contexts/tasksContext'
 import { Empty } from './components/Empty'
 import { Info } from './components/Info'
 import { NewTask } from './components/NewTask'
-import { Task } from './components/Task'
+import { TaskRow } from './components/TaskRow'
 import { ListContainer, TasksContainer } from './styles'
 
 function Home() {
@@ -17,9 +17,22 @@ function Home() {
         <Info />
         {existsTasks() ? (
           <ListContainer>
-            {tasks.map((task) => (
-              <Task key={task.id} {...task} />
-            ))}
+            <table>
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Task</th>
+                  <th>Created At</th>
+                  <th>Deadline</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tasks.map((task) => (
+                  <TaskRow key={task.id} {...task} />
+                ))}
+              </tbody>
+            </table>
           </ListContainer>
         ) : (
           <Empty />

@@ -5,19 +5,34 @@ const TasksContainer = styled.div`
   flex-direction: column;
   gap: 1.5rem;
   position: absolute;
-  width: 46rem;
-  height: 28.1875rem;
-  left: calc(50% - 46rem / 2);
+  width: 65.3125rem;
+  height: 25.125rem;
+  left: calc(50% - 65.3125rem / 2);
   top: 18.1875rem;
 `
 
 const ListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.75rem;
-  overflow-y: auto;
-  max-height: 25.5rem;
+  flex: 1;
+  overflow: auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+      background: ${({ theme }) => theme['gray-400']};
+      padding: 1rem;
+      text-align: left;
+
+      &:first-child {
+        border-top-left-radius: 8px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 8px;
+      }
+    }
+  }
 
   &::-webkit-scrollbar {
     width: 0.625rem;

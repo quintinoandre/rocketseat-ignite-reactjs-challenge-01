@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const FormContainer = styled.form`
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.5rem;
   margin-top: calc(0rem - 1.6875rem);
 `
@@ -11,7 +12,7 @@ const TaskInput = styled.input`
   display: flex;
   align-items: center;
   padding: 1rem;
-  width: 39.875rem;
+  width: 57.9375rem;
   height: 3.375rem;
   background: ${({ theme }) => theme['gray-500']};
   color: ${({ theme }) => theme['gray-300']};
@@ -31,7 +32,7 @@ const CreateNewTaskButton = styled.button`
   align-items: center;
   padding: 1rem;
   gap: 0.5rem;
-  width: 110px;
+  width: 6.875rem;
   height: 3.25rem;
   background: ${({ theme }) => theme['blue-200']};
   color: ${({ theme }) => theme['gray-100']};

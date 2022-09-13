@@ -1,16 +1,24 @@
 import styled from 'styled-components'
 
-const TaskContainer = styled.div`
-  display: flex;
-  gap: 0.75rem;
-  align-items: flex-start;
-  padding: 1rem;
-  background: ${({ theme }) => theme['gray-500']};
-  border: 1px solid ${({ theme }) => theme['gray-400']};
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.06);
-  border-radius: 8px;
-  width: 46rem;
-  height: 4.5rem;
+const TaskRowContainer = styled.tr`
+  td {
+    background-color: ${({ theme }) => theme['gray-500']};
+    border-top: 4px solid ${({ theme }) => theme['gray-600']};
+    padding: 1rem;
+    text-align: center;
+
+    &:nth-child(2) {
+      text-align: left;
+    }
+  }
+
+  &:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+  }
+
+  &:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+  }
 `
 
 const BaseTask = styled.p`
@@ -70,11 +78,28 @@ const TrashButton = styled.button`
   }
 `
 
+const BaseDateButton = styled.button`
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: ${({ theme }) => theme['gray-100']};
+
+  &:hover {
+    color: ${({ theme }) => theme['blue-100']};
+  }
+`
+
+const CreatedAtButton = styled(BaseDateButton)``
+
+const DeadlineButton = styled(BaseDateButton)``
+
 export {
-  TaskContainer,
+  TaskRowContainer,
   TaskDone,
   TaskNotDone,
   CircleButton,
   CheckCircleButton,
   TrashButton,
+  CreatedAtButton,
+  DeadlineButton,
 }
